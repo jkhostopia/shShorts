@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<strong>Query Details</strong><br/>
+	<strong>Host:</strong> {{ sshhost }}
+	<strong>Website/cPanel:</strong> {{ sshsite }}
+	<br/><br/>
+	
+	<details>
+		<summary>Click to view cPanel user logs</summary>
+	<strong>Title:</strong> Search home/user/access-logs/ and home/user/logs/
+	<br/>
+		<strong>Command:</strong> {{ str_accesslog }}<br/>
+		<strong>Results</strong>
+		<pre> {{ com_accesslog.output.decode() }} </pre>
+	<br/>
+	</details>
+	
+	<details>
+		<summary>Click to view Apache error logs</summary>
+	<strong>Title:</strong> Search /user/local/apache/log/error_log
+	<br/>
+		<strong>Command:</strong> {{ str_apacheerror }}<br/>
+		<strong>Results</strong>
+		<pre> {{ com_apacheerror.output.decode() }} </pre>
+	<br/>
+	</details>
+	
+	
+	<details>
+		<summary>Click to view MySQL error logs</summary>
+	<strong>Title:</strong> Search the mysql error logs
+	<br/>
+		<strong>Command:</strong> {{ str_mysqlerror }}<br/>
+		<strong>Results</strong>
+		<pre> {{ com_mysqlerror.output.decode() }} </pre>
+	<br/>
+	</details>
+	
+	<details>
+	
+	<summary>Click to view Sar results</summary>
+	<strong>Title:</strong> Sar Memory Stats
+	<br/>
+		<strong>Command:</strong> {{ str_sarmem }}<br/>
+		<strong>Results</strong>
+		<pre> {{ com_sarmem.output.decode() }} </pre>
+	<br/>
+	
+	<strong>Title:</strong> Sar CPU Usage Stats
+	<br/>
+		<strong>Command:</strong> {{ str_sarcpu }}<br/>
+		<strong>Results</strong>
+		<pre> {{ com_sarcpu.output.decode() }} </pre>
+	<br/>
+	
+	<strong>Title:</strong> Sar Load Average Stats
+	<br/>
+		<strong>Command:</strong> {{ str_sarload }}<br/>
+		<strong>Results</strong>
+		<pre> {{ com_sarload.output.decode() }} </pre>
+	<br/>
+	
+	<strong>Title:</strong> Sar IO Stats
+	<br/>
+		<strong>Command:</strong> {{ str_sario }}<br/>
+		<strong>Results</strong>
+		<pre> {{ com_sario.output.decode() }} </pre>
+	<br/>
+	
+	</details>
+	
+	<br><br>
+		
+{% endblock %}

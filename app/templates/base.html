@@ -1,0 +1,25 @@
+<html>
+    <head>
+        {% if title %}
+			<title>{{ title }} - ShShorts</title>
+        {% else %}
+			<title>ShShorts</title>
+        {% endif %}
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    </head>
+    <body>
+        <div>
+        Shell Shortcut Tools:<br>
+		<a href="{{ url_for('r1check') }}">R1soft Check</a> - 
+		<a href="{{ url_for('diskcheck') }}">High Disk Check</a> -
+		<a href="{{ url_for('wpcheck') }}">WP Attack Check</a> -
+		<a href="{{ url_for('timecheck') }}">Server Time Activity Check</a> -
+		<a href="{{ url_for('customcommand') }}">Custom Command</a>
+        </div>
+		
+		<h3> {{ title }} </h3>
+		
+	{% block content %}{% endblock %}
+
+    </body>
+</html>

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<form method="POST">
+		<p><label for="a">Hostname:</label> <input id="a" type="text" name="sshhost", value="shshort.tk"><br>
+		<p><label for="b">Port Number:</label> <input id="b" type="text" name="sshport", value="22"><br>
+		<p><label for="c">Username:</label> <input id="c" type="text" name="sshuser", value="root"><br>
+		<p><label for="d">Password:</label> <input id="d" type="password" name="sshpass"><br>
+	<input type="submit" value="Submit"><br>
+	</form>
+	
+{% endblock %}
+

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<strong>Query Details</strong><br/>
+	<strong>Host:</strong> {{ sshhost }}<br/><br/>
+
+	<details>
+	<summary>Click to view WordPress attack results</summary>
+	
+		<strong>Title:</strong> IP's hitting xmlrpc.php and wp-login.php<br/>
+		<strong>Command:</strong> {{ str_atkcheck }}<br/>
+		<strong>Results</strong><br>
+		<strong>IP Address - No# of hits - User Agent - Country - ISP</strong>
+		<pre> {{ check_wpattack }} </pre>
+	</details>
+	<br/>
+	
+	<details>
+	<summary>Click to view bad bot attack results</summary>
+		<strong>Title:</strong> IP's of bad bots hitting the server<br/>
+		<strong>Command:</strong> {{ str_atkcheck }}<br/>
+		<strong>Results</strong>
+		<pre> {{ check_wpattack }} </pre>
+	</details>
+	
+{% endblock %}

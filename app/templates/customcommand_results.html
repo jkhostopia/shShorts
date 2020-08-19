@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<strong>Query Details</strong><br/>
+	<strong>Host:</strong> {{ sshhost }}<br/><br>
+	
+	<strong>Title:</strong> Custom SSH Command<br/>
+	<strong>Command:</strong> {{ str_custom }}<br/>
+	<strong>Results</strong>
+	<pre> {{ com_custom.output.decode() }} </pre>
+	
+{% endblock %}

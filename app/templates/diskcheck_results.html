@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+	<strong>Query Details</strong><br/>
+	<strong>Host:</strong> {{ sshhost }}
+	<br/><br/>
+	
+	<strong>Title:</strong> Disk Usage Numbers
+	<br/>
+	<strong>Command:</strong> {{ str_df }}<br/>
+	<strong>Results</strong>
+	<pre> {{ com_df.output.decode() }} </pre>
+	<br/>
+	
+	<details>
+	<summary>Click to view template to send to client</summary>
+	<br/><br/>
+		
+		Our server monitoring alerted us to dangerously high disk usage on your server {{ com_hostname.output.decode() }}
+		<br/><br/>
+		
+		Currently {{ com_spaceused.output.decode() }} disk space is used with {{ com_spacefree.output.decode() }} free.
+		<br/><br/>
+		
+		Please note that if used disk space reaches 99%, website, email, and other services running on your server can begin to fail.
+		<br/><br/>
+		
+		We strongly recommend either deleting unneeded files, or let us know if you would like to consider options for upgrading your disk space.
+		<br/><br/>
+		
+		Bellow you can find a list of all files over {{ ssh_minfilesize }} in size, and the 20 largest folders.
+		<br/><br/>
+		
+		If you have any queries about this, please let us know.
+		<br/><br/>
+		
+		<strong>Large Files:</strong><br/>
+		<pre> {{ com_largefiles.output.decode() }} </pre>
+		<br/>
+		
+		<strong>Large Folders:</strong><br/>
+		<pre> {{ com_largedirs.output.decode() }} </pre>
+		
+	</details>
+	
+	<br/>
+	
+	<details>
+	<summary>Click to view large files</summary>
+	<br/>
+	
+		<strong>Title:</strong> Find large files under /home/, /backup/, /var/log/, /usr/local/
+		<br/>
+		<strong>Command:</strong> {{ str_largefiles }}<br/>
+		<strong>Results</strong>
+		<pre> {{ com_largefiles.output.decode() }} </pre>
+	
+	</details>
+	<br/>
+	
+	
+	<details>
+	<summary>Click to view largest folders</summary>
+	<br/>
+	
+		<strong>Title:</strong> lists 20 largest folders under /home/ and /backup/
+		<br/>
+		<strong>Command:</strong> {{ str_largedirs }}
+		<br/>
+		<strong>Results</strong>
+		<pre> {{ com_largedirs.output.decode() }} </pre>
+		
+	</details>
+	<br/>
+	
+{% endblock %}
+
+

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<strong>Query Details</strong><br/>
+	<strong>Host:</strong> {{ sshhost }}<br/>
+	<strong>Type:</strong> {{ sshhosttype }}<br/>
+	<strong>R1 Server:</strong> {{ sshr1server }}<br/><br/>
+
+	<details>
+	<summary>Click to view R1soft networking results</summary>
+	
+		<strong>Title:</strong> Lists network interfaces<br/>
+		<strong>Command:</strong> {{ str_nics }}<br/>
+		<strong>Results</strong>
+		<pre> {{ com_nics.output.decode() }} </pre>
+		<br/>
+
+		<strong>Title:</strong> Lists network routes<br/>
+		<strong>Command:</strong> {{ str_route }}<br/>
+		<strong>Results</strong>
+		<pre> {{ com_route.output.decode() }} </pre>
+		<br/>
+
+		<strong>Title:</strong> Pings R1soft server 4 times<br/>
+		<strong>Command:</strong> {{ str_r1ping }}<br/>
+		<strong>Results</strong>
+		<pre> {{ com_r1ping.output.decode() }} </pre>
+		
+	</details>
+	<br/>
+
+	<details>
+	<summary>Click to view R1soft kernel results</summary>
+		<strong>Title:</strong> Gets the kernel version
+		<br/>
+		<strong>Command:</strong> {{ str_kernelver }}
+		<br/>
+		<strong>Results</strong>
+		<pre> {{ com_kernelver.output.decode() }} </pre>
+		<br/>
+		
+		<strong>Title:</strong> Pings R1soft server
+		<br/>
+		<strong>Command:</strong> {{ str_kernelmods }}
+		<br/>
+		<strong>Results</strong>
+		<pre> {{ com_kernelmods.output.decode() }} </pre>
+	</details>
+	
+{% endblock %}
